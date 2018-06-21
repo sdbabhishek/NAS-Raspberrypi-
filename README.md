@@ -1,22 +1,25 @@
 # NAS-Raspberrypi-
 using rasbian NAS
 
-1. Samba Server Installation:
+1. Install gedit
+sudo apt-get install gedit 
+
+2. Samba Server Installation:
 sudo apt-get install samba samba-common-bin
 
-2. NTFS Package :
+3. NTFS Package :
 sudo apt-get install ntfs-3g
 
-3. List connected disk:
+4. List connected disk:
 lsblk
 
-4. Creating a directory in root:
+5. Creating a directory in root:
 sudo mount /dev/sda1 /External
 
-5. Configuring samba:
+6. Configuring samba:
 sudo gedit /etc/samba/smb.conf
 
-6. put following code in file
+7. put following code in file
    NOTE - a)If you want just to access only External drive
           b)In case If you want to access Raspberrypi's internal storage and other storage
           
@@ -33,7 +36,7 @@ directory mask = 0777
 public = yes
 
 
-b. In case If you want to access Raspberrypi's internal storage and other storage :
+b. In case If you want to access Raspberrypi's internal storage and External storage :
 
 [global]
 netbios name = RP2
@@ -78,36 +81,37 @@ hosts allow =
 
 
 
-7. Restating the Samba :
+8. Restating the Samba :
 sudo /etc/init.d/samba restart
 
 
-8. If you want it to run on each boot :
-      		  i) create a executable file as follows:
+9. If you want it to run on each boot :
 
-  		     sudo gedit /usr/bin/zz.sh
+   i) create a executable file as follows:
 
-                     and paste the code
+sudo gedit /usr/bin/zz.sh
+
+and paste the code
                      
-                   #!/bin/bash
-		    sudo /etc/init.d/samba restart
+#!/bin/bash
+sudo /etc/init.d/samba restart
 
-		  ii)Change permission to executable as:
+  ii)Change permission to executable as:
 
-   		   sudo chmod +x /usr/bin/zz.sh
+sudo chmod +x /usr/bin/zz.sh
 
-                  iii) Reboot the device
+  iii) Reboot the device
 
-			sudo reboot
+sudo reboot
 
-NOTE- since external drive is mounted after the boot,you will not be able 
-      to acess hdd/external storage.
-      After each boot you have to mount external storage. 
+NOTE- since external drive is mounted after the boot,So you will not be able 
+      to acess hdd/external storage after reboot.
+      So After each boot you have to mount external storage. 
       so run this command in terminal after boot up
 
-	sudo mount /dev/sda1 /External
+sudo mount /dev/sda1 /External
 
-9. Open This PC / My_Computer and click on Network in LHS below. You'll see RP2
+9. Open This PC / My_Computer and click on Network in Left Hand Side at bottom. You'll see RP2
 
 
     					**ENJOY**
