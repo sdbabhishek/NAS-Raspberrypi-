@@ -80,3 +80,34 @@ hosts allow =
 
 7. Restating the Samba :
 sudo /etc/init.d/samba restart
+
+
+8. If you want it to run on each boot :
+      		  i) create a executable file as follows:
+
+  		     sudo gedit /usr/bin/zz.sh
+
+                     and paste the code
+                     
+                   #!/bin/bash
+		    sudo /etc/init.d/samba restart
+
+		  ii)Change permission to executable as:
+
+   		   sudo chmod +x /usr/bin/zz.sh
+
+                  iii) Reboot the device
+
+			sudo reboot
+
+NOTE- since external drive is mounted after the boot,you will not be able 
+      to acess hdd/external storage.
+      After each boot you have to mount external storage. 
+      so run this command in terminal after boot up
+
+	sudo mount /dev/sda1 /External
+
+9. Open This PC / My_Computer and click on Network in LHS below. You'll see RP2
+
+
+    					**ENJOY**
